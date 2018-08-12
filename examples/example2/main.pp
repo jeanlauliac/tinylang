@@ -7,7 +7,7 @@ export int16 default(vec<string> args) {
     IO.file output(file_name, exclusive | write);
     output.write(Utils.build_hello("world"));
     // File automatically get closed at the end of the scope.
-  } catch (auto error) {
+  } catch (error) {
     switch (error) {
       // switch case allows you to pattern-match.
       case IO.file_exists:
