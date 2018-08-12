@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const parse = require('./lib/parse');
-const typecheck = require('./lib/typecheck');
+const analyse = require('./lib/analyse');
 const generateJs = require('./lib/generateJs');
 
 function main() {
@@ -14,7 +14,7 @@ function main() {
   const filePath = process.argv[2];
   const code = fs.readFileSync(filePath, 'utf8');
   const unit = parse(filePath, code);
-  typecheck(unit);
+  const annot = analyse(unit);
   generateJs(unit, process.stdout.write.bind(process.stdout));
 }
 
