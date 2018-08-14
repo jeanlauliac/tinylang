@@ -59,3 +59,23 @@ it "outputs a file" {
 // * lower_case_functions(), UpperCaseNamespaces.smth(), Smth.SOME_CONSTANT.
 // * no global state, expect for a diag() function to output stuff in debug
 //   mode (ex. no global `printf` function, `cout`, `console.log`)
+// * because of language structure, and no global state, we can identify
+//   "pure" function and hot-reload them (ex. in the browser)
+
+
+// * when passing an object to a function, the comp determines what to do:
+//     either we 'move' the object: no allocation necessary, but we cannot use
+//        the object later in the function. This is the default for most cases
+//     or we 'lend' the object if it's a read-only arg, we can still use the
+//        object later
+//     or we pass it by reference, we can still use the object later, but
+//        callee must explicitely mark as a 'ref' (operator & ?)
+//     or we need to clone() the object to allocate a copy.
+
+// basically when calling a sub-function with an argument A, that function
+// may either just peek at the object / borrow it, or it may need to get
+// ownership of it (to put it in its own storage, modify it, etc.) If it's the
+// latter, we have 2 choices: either we need to clone() (in which case we
+// don't even need our own ownership of that object), or we need to give
+// up ownership, meaning we cannot use that object in the following statements
+// of the function.
