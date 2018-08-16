@@ -1,6 +1,6 @@
 /**
  * Meant to compile as a Node.js script.
  */
-export uint16 default(vec<string> args) {
+export u16 default(vec<str> args) {
   IO.print("Hello, " + "world");
 }

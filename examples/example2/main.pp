@@ -1,10 +1,10 @@
 string FILE_NAME = "hello.txt";
 
-export int16 default(vec<string> args, IO.file stdout) {
+export i16 default(vec<str> args, IO.file stdout) {
   try {
     // It can infer `output` is of native type `IO.file`
     auto output = open_hello(FILE_NAME);
-    // `write` is actually the function `uint32 IO.write(IO.file file)`.
+    // `write` is actually the function `u32 IO.write(IO.file file)`.
     // It looks up the functions in the same namespace as the type.
     output.write(Utils.build_hello("world"));
     // File automatically get closed at the end of the scope.
@@ -25,7 +25,7 @@ export int16 default(vec<string> args, IO.file stdout) {
 }
 
 // It can infer the return type based on the `return` statement.
-auto open_hello(string file_name) {
+auto open_hello(str file_name) {
   // The 'exclusive' identifier is only valid within the scope of the
   // argument.
   IO.file file = IO.open(file_name, exclusive | write);
@@ -33,12 +33,18 @@ auto open_hello(string file_name) {
   return file;
 }
 
-it "outputs a file" {
-  default([], IO.string_file());
-  auto result = IO.open(FILE_NAME, must_exist | read);
-  expect(IO.read_entire_file(result) == "Hello, world");
-}
+describe("main") {
+  // namespace destructuring
+  using {open} = IO;
+  // aliases
+  using open_file = IO.open;
 
+  it("outputs a file") {
+    default([], IO.string_file());
+    auto result = IO.open(FILE_NAME, must_exist | read);
+    expect(IO.read_entire_file(result) == "Hello, world");
+  }
+}
 
 // Features:
 // * everything is value-type, destruction of resources is deterministic
