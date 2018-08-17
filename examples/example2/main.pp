@@ -43,6 +43,9 @@ describe("main") {
     default([], IO.string_file());
     auto result = IO.open(FILE_NAME, must_exist | read);
     expect(IO.read_entire_file(result) == "Hello, world");
+
+    // manual release of an owned object, if we need to do more stuff afterwards
+    release result;
   }
 }
 
