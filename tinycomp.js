@@ -14,8 +14,8 @@ function main() {
   const filePath = process.argv[2];
   const code = fs.readFileSync(filePath, 'utf8');
   const unit = parse(filePath, code);
-  const annot = analyse(unit);
-  generateJs(unit, process.stdout.write.bind(process.stdout));
+  const inter = analyse(unit);
+  generateJs(inter, process.stdout.write.bind(process.stdout));
 }
 
 main();
