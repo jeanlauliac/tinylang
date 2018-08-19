@@ -1,6 +1,6 @@
 string FILE_NAME = "hello.txt";
 
-export i16 default(vec<str> args, IO.file stdout) {
+export i16 (vec<str> args, IO.file stdout) {
   try {
     // It can infer `output` is of native type `IO.file`
     auto output = open_hello(FILE_NAME);
