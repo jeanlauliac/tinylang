@@ -1,0 +1,16 @@
+export u16 (vec<str> args) {
+  IO.print("Hello, World");
+}
+####
+{
+  "output": "Hello, World\n"
+}
+>>>>
+export u16 (vec<str> args) {
+  IO.print("Hello, " + args[1]);
+}
+####
+{
+  "args": ["world!"],
+  "output": "Hello, world!\n"
+}
