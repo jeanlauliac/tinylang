@@ -2,6 +2,6 @@
  * Meant to compile as a Node.js script.
  */
 export u16 (vec<str> args) {
-  i16 foo;
-  IO.print("Hello, " + args[1]);
+  str world = "world";
+  IO.print("Hello, " + world);
 }

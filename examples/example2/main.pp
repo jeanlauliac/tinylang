@@ -88,3 +88,8 @@ describe("main") {
 // don't even need our own ownership of that object), or we need to give
 // up ownership, meaning we cannot use that object in the following statements
 // of the function.
+
+
+// * no side-effect without authorisation. A function/package need to get
+//   permission from callee before running arbitrary sub-processes, access
+//   network, write files, etc.
