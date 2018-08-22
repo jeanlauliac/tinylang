@@ -93,3 +93,7 @@ describe("main") {
 // * no side-effect without authorisation. A function/package need to get
 //   permission from callee before running arbitrary sub-processes, access
 //   network, write files, etc.
+
+// * if local variable it not initialized at declaration, analyser verifies all
+//   code paths initialize it before it is accessed the first time (or passed as
+//   argument?)

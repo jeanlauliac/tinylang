@@ -1,4 +1,4 @@
-export void default(string name) {
+export str (str name) {
   return "Hello, ${name}";
 }
 
