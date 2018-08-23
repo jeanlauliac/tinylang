@@ -3,6 +3,6 @@
  */
 export u16 (vec<str> args) {
   str world = "world";
-  if (true) "hihi";
+  if (true) IO.print("tadam");
   IO.print("Hello, " + world);
 }
