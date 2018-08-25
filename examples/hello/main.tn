@@ -1,6 +1,4 @@
-/**
- * Meant to compile as a Node.js script.
- */
+
 export u16 (vec<str> args) {
   str world = "world";
   if (args[1] == "foo") {
@@ -9,4 +7,9 @@ export u16 (vec<str> args) {
     IO.print("boop" + a);
   }
   IO.print("Hello, " + world);
+}
+
+u16 something() {
+
+  IO.print("heya");
 }

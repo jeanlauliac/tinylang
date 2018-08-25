@@ -23,3 +23,15 @@ export u16 (vec<str> args) {
 {
   "output": "Hello, World\n"
 }
+>>>>
+export u16 (vec<str> args) {
+  str target = args[1];
+  if (target == "World") {
+    IO.print("Hello, " + target);
+  }
+}
+####
+{
+  "args": ["World"],
+  "output": "Hello, World\n"
+}

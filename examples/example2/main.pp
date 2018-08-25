@@ -1,6 +1,6 @@
 string FILE_NAME = "hello.txt";
 
-export i16 (vec<str> args, IO.tokens io) {
+export u16 (vec<str> args, IO.Access io) {
   try {
     // It can infer `output` is of native type `IO.file`
     auto output = io.fs.open_hello(FILE_NAME);
@@ -25,7 +25,7 @@ export i16 (vec<str> args, IO.tokens io) {
 }
 
 // It can infer the return type based on the `return` statement.
-auto open_hello(IO.fs_token fs, str file_name) {
+auto open_hello(IO.Filesystem fs, str file_name) {
   // The 'exclusive' identifier is only valid within the scope of the
   // argument.
   IO.file file = fs.open(file_name, exclusive | write_only);
@@ -48,6 +48,73 @@ describe("main") {
     release result;
   }
 }
+
+// Structure syntax.
+struct Location {
+  str file_path,
+  u32 line,
+  u32 column,
+}
+
+// variants-style enum
+enum Expression_type {
+  sum(struct {Expression left, Expression right}),
+  literal(u32),
+}
+
+struct Expression {
+  Expression_type type,
+  Location location,
+}
+
+void smth() {
+  // Structure initializer syntax
+  Location cur_loc = {
+    file_path: "foo.js",
+    line: 23,
+    column: 12,
+  };
+  ++cur_loc.line;
+
+  // destructuring
+  Location {line} = cur_loc;
+  auto {column} = cur_loc;
+
+  // enums/variants
+  Expression exp = {
+    value: literal(45),
+    location: cur_loc,
+  }
+  auto var = Expression_type.sum(exp, {
+    value: literal(10),
+    location: cur_loc,
+  });
+
+  // Dictionnary initializer syntax
+  dict<str, u16> smth = {
+    "foo": 9765,
+    "bar": 123,
+  };
+}
+
+void print(Expression exp) {
+  // matching variants
+  switch (exp.value) {
+  case literal(num):
+    IO.print(num.to_string());
+    break;
+  case sum({left, right}):
+    left.print();
+    IO.print(' + ');
+    right.print();
+    break;
+  }
+}
+
+// normal enum
+enum File_modes { read_only, read_write, write_only };
+
+
 
 // Features:
 // * everything is value-type, destruction of resources is deterministic
