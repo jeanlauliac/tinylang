@@ -4,8 +4,9 @@
 export u16 (vec<str> args) {
   str world = "world";
   if (args[1] == "foo") {
-    IO.print("beep");
-    IO.print("boop");
+    str a = "hihi";
+    IO.print("beep" + args[1]);
+    IO.print("boop" + a);
   }
   IO.print("Hello, " + world);
 }
