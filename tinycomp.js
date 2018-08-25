@@ -13,9 +13,7 @@ function main() {
   }
   const filePath = process.argv[2];
   const code = fs.readFileSync(filePath, 'utf8');
-  const unit = parse(filePath, code);
-  const inter = analyse(filePath, unit);
-  generateJs(inter, process.stdout.write.bind(process.stdout));
+  compile(filePath, code, process.stdout.write.bind(process.stdout));
 }
 
 main();
