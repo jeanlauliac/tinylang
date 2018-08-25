@@ -97,3 +97,10 @@ describe("main") {
 // * if local variable it not initialized at declaration, analyser verifies all
 //   code paths initialize it before it is accessed the first time (or passed as
 //   argument?)
+
+
+// Custom dispose() functions? If specified, then restrictions apply on type
+//
+// void dispose(IO.file target) {
+//   IO.close_fd(target.fd);
+// }
