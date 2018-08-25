@@ -1,9 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const parse = require('./lib/parse');
-const analyse = require('./lib/analyse');
-const generateJs = require('./lib/generateJs');
+const compile = require('./lib/compile');
 
 function main() {
   if (process.argv.length < 3) {
