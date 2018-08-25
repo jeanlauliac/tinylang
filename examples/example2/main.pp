@@ -1,9 +1,9 @@
 string FILE_NAME = "hello.txt";
 
-export i16 (vec<str> args, IO.file stdout) {
+export i16 (vec<str> args, IO.tokens io) {
   try {
     // It can infer `output` is of native type `IO.file`
-    auto output = open_hello(FILE_NAME);
+    auto output = io.fs.open_hello(FILE_NAME);
     // `write` is actually the function `u32 IO.write(IO.file file)`.
     // It looks up the functions in the same namespace as the type.
     output.write(Utils.build_hello("world"));
@@ -25,10 +25,10 @@ export i16 (vec<str> args, IO.file stdout) {
 }
 
 // It can infer the return type based on the `return` statement.
-auto open_hello(str file_name) {
+auto open_hello(IO.fs_token fs, str file_name) {
   // The 'exclusive' identifier is only valid within the scope of the
   // argument.
-  IO.file file = IO.open(file_name, exclusive | write);
+  IO.file file = fs.open(file_name, exclusive | write_only);
   // When returning such a value-type we're transfering ownership to the caller.
   return file;
 }
