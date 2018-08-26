@@ -9,7 +9,11 @@ export u16 (vec<str> args) {
   IO.print("Hello, " + world);
 }
 
-u16 something() {
+struct Foo {
+  i16 id,
+  str smth,
+}
 
+u16 something() {
   IO.print("heya");
 }
