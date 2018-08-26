@@ -1,13 +1,17 @@
 
+u32 blah() {
+  IO.print("blah");
+}
+
 export u16 (vec<str> args) {
   str world = "world";
   if (args[1] == "foo") {
     str a = "hihi";
     IO.print("beep" + args[1]);
-    IO.print("boop" + a);
+    something();
+    IO.print("boop" + something());
   }
   IO.print("Hello, " + world);
-  something();
 }
 
 struct Foo {
@@ -15,6 +19,7 @@ struct Foo {
   str smth,
 }
 
-u16 something() {
+str something() {
+  blah();
   IO.print("heya");
 }
