@@ -46,3 +46,14 @@ u16 print_hello() {
 {
   "output": "Hello, World\n"
 }
+>>>>
+export u16 (vec<str> args) {
+  IO.print(get_hello());
+}
+str get_hello() {
+  return "Hello, World";
+}
+####
+{
+  "output": "Hello, World\n"
+}
