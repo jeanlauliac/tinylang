@@ -5,7 +5,8 @@ Here's an "hello world" implementation:
 
 ```cpp
 // main.tn
-export u16 (vec<str> args) {
+export u8 (vec<str> args) {
   IO.print("Hello, world");
+  return 0;
 }
 ```

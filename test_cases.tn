@@ -1,13 +1,15 @@
-export u16 (vec<str> args) {
+export u32 (vec<str> args) {
   IO.print("Hello, World");
+  return 0;
 }
 ####
 {
   "output": "Hello, World\n"
 }
 >>>>
-export u16 (vec<str> args) {
+export u32 (vec<str> args) {
   IO.print("Hello, " + args[1]);
+  return 0;
 }
 ####
 {
@@ -15,20 +17,22 @@ export u16 (vec<str> args) {
   "output": "Hello, world!\n"
 }
 >>>>
-export u16 (vec<str> args) {
+export u32 (vec<str> args) {
   str world = "World";
   IO.print("Hello, " + world);
+  return 0;
 }
 ####
 {
   "output": "Hello, World\n"
 }
 >>>>
-export u16 (vec<str> args) {
+export u32 (vec<str> args) {
   str target = args[1];
   if (target == "World") {
     IO.print("Hello, " + target);
   }
+  return 0;
 }
 ####
 {
@@ -36,19 +40,21 @@ export u16 (vec<str> args) {
   "output": "Hello, World\n"
 }
 >>>>
-export u16 (vec<str> args) {
-  print_hello();
+export u32 (vec<str> args) {
+  return print_hello();
 }
-u16 print_hello() {
+u32 print_hello() {
   IO.print("Hello, World");
+  return 0;
 }
 ####
 {
   "output": "Hello, World\n"
 }
 >>>>
-export u16 (vec<str> args) {
+export u32 (vec<str> args) {
   IO.print(get_hello());
+  return 0;
 }
 str get_hello() {
   return "Hello, World";
