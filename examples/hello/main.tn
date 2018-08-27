@@ -1,4 +1,8 @@
 
+str blah(str smth) {
+  return "blah" + smth;
+}
+
 export u16 (vec<str> args) {
   str world = "world";
   if (args[1] == "foo") {
@@ -18,8 +22,4 @@ struct Foo {
 str something(str smth) {
   str a = blah(smth);
   IO.print("heya" + a);
-}
-
-str blah(str smth) {
-  return "blah" + smth;
 }
