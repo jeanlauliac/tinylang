@@ -1,27 +1,6 @@
 
-str blah(str smth) {
-  return "blah" + smth;
-}
-
 export u32 (vec<str> args) {
-  str world = "world";
-  if (args[1] == "foo") {
-    str a = "hihi";
-    IO.print("beep" + args[1]);
-    something("BOOOP");
-    IO.print("boop");
-  }
-  IO.print("Hello, " + world);
+  push(args, "wef");
+  IO.print("Hello, World");
   return 0;
-}
-
-struct Foo {
-  i16 id,
-  str smth,
-}
-
-str something(str smth) {
-  str a = blah(smth);
-  IO.print("heya" + a);
-  return "wef";
 }
