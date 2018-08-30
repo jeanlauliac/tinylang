@@ -8,3 +8,16 @@ export u32 (vec<str> args) {
 void foo(vec<str> bim) {
   push(bim, "weg");
 }
+
+
+
+// void foo(vec<str> bim) {
+//   push(bim, "weg");
+// }
+
+// void bar(vec<str> bim) {
+//   vec<str> smth = ["ahah"];
+//   foo(smth);
+//   push(bim, "weg");
+// }
+

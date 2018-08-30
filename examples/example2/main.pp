@@ -91,10 +91,10 @@ void smth() {
   });
 
   // Dictionnary initializer syntax
-  dict<str, u16> smth = {
+  dict<str, u16> smth = [
     "foo": 9765,
     "bar": 123,
-  };
+  ];
 }
 
 void print(Expression exp) {
@@ -114,6 +114,54 @@ void print(Expression exp) {
 // normal enum
 enum File_modes { read_only, read_write, write_only };
 
+
+void refs_example() {
+  // Initialise a vector.
+  vec<u16> foo = [3, 6, 9];
+
+  // This does a copy of the vector. (But, compiler might decide just do
+  // (1) a reference if vectors are not mutated later or (2) a move if
+  // "foo" doesn't get accessed anymore later.
+  vec<u16> glo = foo;
+
+  // Creates a reference to "foo". "foo" and "bar" are aliased to the same
+  // vector. This is safe as "bar" lifetime can't exceeds the one of "foo"
+  // since they are in the same scope. Operator "^" declares a reference.
+  // This is not part of the type, but part of the local's declaration.
+  // Indeed "vec<u26^>" is not a valid type, for example (TODO: why not?).
+  // Operator "&" makes it explicit we want to get a ref. Useful when calling
+  // functions taking refs.
+  vec<u16> ^bar = &foo;
+
+  // These are equivalent, push in "foo" (and "bar"). For both case, because
+  // "push(vec<T> ^target, T item)" takes a reference as argument, we have
+  // to use operator "&" so that it's clear we give it the right to mutate our
+  // local values.
+  push(&foo, 10);
+  push(&bar, 10);
+
+  // Same, shorthand notation. In that case `foo` is automatically taken as ref.
+  foo.push(10);
+  bar.push(10);
+
+  // These are equivalent, references cannot be "relinked" to another variable,
+  // "=" just assign the aliased variable
+  foo = [1, 2];
+  bar = [1, 2];
+
+  {
+    // Get a reference to a specific item. This causes "foo" to become immutable,
+    // because we cannot the reference to get invalidated.
+    u16 ^itemref = &foo[0];
+
+    // Would be illegal, causing a compilation error.
+    // foo.push(20);
+  }
+
+  // This is legal again, since "itemref" is not in scope anymore.
+  foo.push(20);
+
+}
 
 
 // Features:
