@@ -161,6 +161,8 @@ void refs_example() {
   // This is legal again, since "itemref" is not in scope anymore.
   foo.push(20);
 
+  // We don't read from `foo` after pushing something, so the push is useless.
+  // This should generate an error here.
 }
 
 
