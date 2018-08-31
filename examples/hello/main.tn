@@ -10,7 +10,7 @@ void foo(vec<str> bim) {
 }
 
 
-
+/*
 // void foo(vec<str> bim) {
 //   push(bim, "weg");
 // }
@@ -21,3 +21,5 @@ void foo(vec<str> bim) {
 //   push(bim, "weg");
 // }
 
+
+*/
