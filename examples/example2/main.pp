@@ -166,6 +166,15 @@ void refs_example() {
 }
 
 
+void uninitialized_vars(bool smth) {
+  vec<str> foo;
+  if (smth) foo = [];
+
+  // Compile error: "foo" isn't initialised for all possible paths.
+  foo.push("bar");
+}
+
+
 // Features:
 // * everything is value-type, destruction of resources is deterministic
 //   (not just deallocation)

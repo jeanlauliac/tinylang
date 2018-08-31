@@ -1,14 +1,15 @@
 
 export u32 (vec<str> args) {
-  foo(args);
-  IO.print("Hello, World" + args[1]);
+  vec<str> a = ["nada"];
+  foo(a, "tadam");
+  push(a, "ahah");
+  IO.print("Hello, World " + a[0]);
   return 0;
 }
 
-void foo(vec<str> bim) {
-  push(bim, "weg");
+void foo(vec<str> bim, str a) {
+  push(bim, a + "weg");
 }
-
 
 /*
 // void foo(vec<str> bim) {
