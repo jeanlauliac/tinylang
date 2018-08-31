@@ -1,26 +1,19 @@
 
 export u32 (vec<str> args) {
   vec<str> a = ["nada"];
-  foo(a, "tadam");
+  vec<str> b = concat(a, "tadam");
   push(a, "ahah");
-  IO.print("Hello, World " + a[0]);
+  IO.print("Hello, World " + b[0]);
   return 0;
 }
 
-void foo(vec<str> bim, str a) {
+vec<str> concat(vec<str> bim, str a) {
   push(bim, a + "weg");
+  return bim;
 }
 
-/*
-// void foo(vec<str> bim) {
-//   push(bim, "weg");
+// u32 factorial(u32 A) {
+//   if (A == 0) return 1;
+//   return factorial(A + 1) + A;
 // }
 
-// void bar(vec<str> bim) {
-//   vec<str> smth = ["ahah"];
-//   foo(smth);
-//   push(bim, "weg");
-// }
-
-
-*/
