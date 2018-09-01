@@ -13,10 +13,10 @@ vec<str> concat(vec<str> &bim, str a) {
   return bim;
 }
 
-/*
+
 // u32 factorial(u32 A) {
 //   if (A == 0) return 1;
 //   return factorial(A + 1) + A;
 // }
-*/
+
 
