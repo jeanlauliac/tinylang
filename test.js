@@ -9,7 +9,7 @@ const TEST_CASES_PATH = './test_cases.tn';
 function main() {
   let line = 1;
   const cases = fs.readFileSync(TEST_CASES_PATH, 'utf8')
-    .split('>>>>\n').map(caseStr => {
+    .split('/'.repeat(79) + '\n').map(caseStr => {
       const pair = caseStr.split('####\n');
       const res = {
         args: [],

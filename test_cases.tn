@@ -6,7 +6,7 @@ export u32 (vec<str> args) {
 {
   "output": "Hello, World\n"
 }
->>>>
+///////////////////////////////////////////////////////////////////////////////
 export u32 (vec<str> args) {
   IO.print("Hello, " + args[1]);
   return 0;
@@ -16,7 +16,7 @@ export u32 (vec<str> args) {
   "args": ["world!"],
   "output": "Hello, world!\n"
 }
->>>>
+///////////////////////////////////////////////////////////////////////////////
 export u32 (vec<str> args) {
   str world = "World";
   IO.print("Hello, " + world);
@@ -26,7 +26,7 @@ export u32 (vec<str> args) {
 {
   "output": "Hello, World\n"
 }
->>>>
+///////////////////////////////////////////////////////////////////////////////
 export u32 (vec<str> args) {
   str target = args[1];
   if (target == "World") {
@@ -39,7 +39,7 @@ export u32 (vec<str> args) {
   "args": ["World"],
   "output": "Hello, World\n"
 }
->>>>
+///////////////////////////////////////////////////////////////////////////////
 export u32 (vec<str> args) {
   return print_hello();
 }
@@ -51,7 +51,7 @@ u32 print_hello() {
 {
   "output": "Hello, World\n"
 }
->>>>
+///////////////////////////////////////////////////////////////////////////////
 export u32 (vec<str> args) {
   IO.print(get_hello());
   return 0;
@@ -62,4 +62,33 @@ str get_hello() {
 ####
 {
   "output": "Hello, World\n"
+}
+///////////////////////////////////////////////////////////////////////////////
+export u32 (vec<str> args) {
+  vec<str> stuff = ["Hello"];
+  add_world(&stuff);
+  IO.print(stuff[0] + stuff[1]);
+  return 0;
+}
+void add_world(vec<str> &stuff) {
+  push(&stuff, ", World");
+}
+####
+{
+  "output": "Hello, World\n"
+}
+///////////////////////////////////////////////////////////////////////////////
+export u32 (vec<str> args) {
+  vec<str> stuff = ["Hello"];
+  add_world(stuff);
+  push(&stuff, ", you");
+  IO.print(stuff[0] + stuff[1]);
+  return 0;
+}
+void add_world(vec<str> stuff) {
+  push(&stuff, ", World");
+}
+####
+{
+  "output": "Hello, you\n"
 }
