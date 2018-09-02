@@ -1,21 +1,11 @@
 
 export u32 (vec<str> args) {
-  vec<str> a = ["nada"];
-  vec<str> b = concat(&a, "tadam");
-  u32 idx = 1;
-  push(&a, "ahah");
-  IO.print("Hello, World " + b[idx]);
+  str world = "something";
+  // set_world(&world);
+  IO.print("Hello, " + world);
   return 0;
 }
 
-vec<str> concat(vec<str> &bim, str a) {
-  push(&bim, a + "weg");
-  return bim;
-}
-
-
-// u32 factorial(u32 A) {
-//   if (A == 0) return 1;
-//   return factorial(A + 1) + A;
+// void set_world(str &stuff) {
+//   world = "world";
 // }
-
