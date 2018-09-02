@@ -96,3 +96,14 @@ void add_world(vec<str> stuff) {
 {
   "output": "Hello, you\n"
 }
+///////////////////////////////////////////////////////////////////////////////
+export u32 (vec<str> args) {
+  str world = "something";
+  world = "World";
+  IO.print("Hello, " + world);
+  return 0;
+}
+####
+{
+  "output": "Hello, World\n"
+}

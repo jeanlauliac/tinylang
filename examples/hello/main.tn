@@ -1,6 +1,7 @@
 
 export u32 (vec<str> args) {
   str world = "something";
+  world = "world";
   // set_world(&world);
   IO.print("Hello, " + world);
   return 0;
