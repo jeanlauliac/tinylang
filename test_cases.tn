@@ -107,3 +107,36 @@ export u32 (vec<str> args) {
 {
   "output": "Hello, World\n"
 }
+///////////////////////////////////////////////////////////////////////////////
+export u32 (vec<str> args) {
+  str world = "something";
+  set_world(&world);
+  IO.print("Hello, " + world);
+  return 0;
+}
+
+void set_world(str &stuff) {
+  stuff = "World";
+}
+####
+{
+  "output": "Hello, World\n"
+}
+///////////////////////////////////////////////////////////////////////////////
+export u32 (vec<str> args) {
+  str world = "something";
+  u32 retval = set_world(&world);
+  if (retval == 100) {
+    IO.print("Hello, " + world);
+  }
+  return 0;
+}
+
+u32 set_world(str &stuff) {
+  stuff = "World";
+  return 100;
+}
+####
+{
+  "output": "Hello, World\n"
+}
