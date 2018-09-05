@@ -1,13 +1,10 @@
 
 export u32 (vec<str> args) {
-  str world = "something";
-  // world = "world";
-  set_world(&world);
-  IO.print("Hello, " + world);
-  return 0;
+  IO.print("Hello, World");
+  return facto(5);
 }
 
-u32 set_world(str &stuff) {
-  stuff = "world";
-  return 24;
+u32 facto(u32 N) {
+  if (N == 0) return 1;
+  return facto(N - 1) * N;
 }
