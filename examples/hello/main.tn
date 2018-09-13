@@ -1,10 +1,10 @@
 
 export u32 (vec<str> args) {
-  IO.print("Hello, World");
   return facto(5);
 }
 
 u32 facto(u32 n) {
   if (n == 0) return 1;
+  while (true);
   return facto(n - 1) * n;
 }
